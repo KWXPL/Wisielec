@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <random>
+#include <string>
 
 void menu () {
 	std::cout << "Wybierz opcje z menu wybierajac odpowiednia liczbe\n";
@@ -28,20 +29,21 @@ int menuInput () {
 	}
 }
 
-void newWord() {
-
-
+std::string newWord() {
+	std::vector <std::string> *words = readWordsFromFile();
+	int randomNumber = rand() % words->size();
+	std::string word = words->at(randomNumber);
+	return word;
 }
 
-std::vector <std::string> readWordsFromFile() {
+std::vector <std::string> *readWordsFromFile() {
 	std::string data;
 	std::vector <std::string> words;
 	std::ifstream input{ "words.txt" };
-	while (input >> data)
-	{
+	while (input >> data) {
 		words.push_back(data);
 	}
-	return words;
+	return &words;
 }
 
 
