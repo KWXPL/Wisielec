@@ -4,18 +4,37 @@
 #include <random>
 #include <string>
 
-void menu () {
+void menu() {
 	std::cout << "Wybierz opcje z menu wybierajac odpowiednia liczbe\n";
 	std::cout << "1. Nowa gra\n";
 	std::cout << "2. Sproboj jeszcze raz\n";
 	switch (menuInput()) {
 	case 1:
-		
+		newGame();
 		break;
 	default:
 		break;
 	}
 }
+
+void newGame() {
+	std::string word = newWord();
+	int wordSize = word.size();
+	game(word, wordSize);
+}
+
+void game(std::string word, int wordSize) {
+
+}
+
+void printEmptyWord( int wordSize) {
+	for (int i = 0; i < wordSize; i++) {
+		std::cout << "-";
+	}
+	
+}
+
+void 
 
 int menuInput () {
 	std::string input;
@@ -47,7 +66,7 @@ std::vector <std::string> *readWordsFromFile() {
 }
 
 
-int main () {
+int main() {
 	menu();
     return 0;
 }
